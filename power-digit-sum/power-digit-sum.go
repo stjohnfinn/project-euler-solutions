@@ -3,25 +3,16 @@ package main
 import (
 	"fmt"
 	"math"
+	"math/big"
+	"strconv"
 )
 
-func sumDigits(x int) int {
-	var sum int = 0
-
-	for {
-		if x < 10 {
-			break
-		}
-		sum += x % 10
-		x /= 10
-	}
-	sum += x
-	return sum
-}
-
 func main() {
-	for i := 0; i < 30; i++ {
-		var curr int = int(math.Pow(2, float64(i)))
-		fmt.Println("(", i, ",", sumDigits(curr), ")")
+
+	fmt.Println("Starting power-digit-sum.go...")
+	x := big.NewInt(int64(math.Pow(2, 1000)))
+	sum := 0
+	for _, val := range strconv.Itoa(x) {
+		sum += strconv.ParseInt(val)
 	}
 }
